@@ -1,0 +1,5 @@
+strands-agents[otel]>=1.44.0
+bedrock-agentcore
+aws-opentelemetry-distro
+boto3
+mcp

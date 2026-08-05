@@ -1,0 +1,12 @@
+.env
+.venv/
+blog/
+video-assets/
+cdk.out/
+.bedrock_agentcore.yaml
+deployment_package.zip
+__pycache__/
+*.pyc
+.DS_Store
+bookings.db
+.ipynb_checkpoints/

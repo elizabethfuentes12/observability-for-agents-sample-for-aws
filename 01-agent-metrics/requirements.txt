@@ -1,0 +1,5 @@
+strands-agents>=1.44.0
+strands-agents[openai]>=1.44.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+nest-asyncio>=1.6.0

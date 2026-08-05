@@ -1,0 +1,13 @@
+.env
+.venv
+__pycache__/
+*.pyc
+.bedrock_agentcore.yaml
+.bedrock_agentcore*.yaml
+deployment_package/
+deploy_agentcore.py
+cleanup.py
+lambda_tools/
+tool_schemas/
+README.md
+requirements.txt

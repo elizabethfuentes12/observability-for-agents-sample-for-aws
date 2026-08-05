@@ -1,0 +1,72 @@
+[
+  {
+    "name": "search_flights",
+    "description": "Search one-way flight offers via the Duffel sandbox API. Present the returned offers to the traveler to choose from.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "origin": {
+          "type": "string",
+          "description": "Origin airport IATA code (3 letters, e.g. \"JFK\")."
+        },
+        "destination": {
+          "type": "string",
+          "description": "Destination airport IATA code (3 letters, e.g. \"MIA\")."
+        },
+        "departure_date": {
+          "type": "string",
+          "description": "Departure date in YYYY-MM-DD format."
+        }
+      },
+      "required": ["origin", "destination", "departure_date"]
+    }
+  },
+  {
+    "name": "get_weather",
+    "description": "Get the daily weather forecast for a city on a given date, using the Open-Meteo API. Use this to advise on what to pack.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string",
+          "description": "City name, e.g. \"Miami\"."
+        },
+        "target_date": {
+          "type": "string",
+          "description": "Date in YYYY-MM-DD format, within the next ~16 days."
+        }
+      },
+      "required": ["city", "target_date"]
+    }
+  },
+  {
+    "name": "book_flight",
+    "description": "Book a chosen flight offer for a named passenger. Records the booking in the FlightBookings DynamoDB table. Call only after search_flights and once the traveler has chosen an offer.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "offer_id": {
+          "type": "string",
+          "description": "The offer_id of the chosen flight (from search_flights)."
+        },
+        "given_name": {
+          "type": "string",
+          "description": "Passenger's first name."
+        },
+        "family_name": {
+          "type": "string",
+          "description": "Passenger's last name."
+        },
+        "amount": {
+          "type": "string",
+          "description": "The offer's total_amount (from the chosen offer)."
+        },
+        "currency": {
+          "type": "string",
+          "description": "The offer's currency (default \"USD\")."
+        }
+      },
+      "required": ["offer_id", "given_name", "family_name", "amount"]
+    }
+  }
+]
