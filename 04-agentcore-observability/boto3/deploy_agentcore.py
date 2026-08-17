@@ -17,6 +17,7 @@ from __future__ import annotations
 import json
 import os
 import pathlib
+import threading
 import time
 
 import boto3
@@ -136,7 +137,7 @@ iam_client.put_role_policy(
     }))
 
 print("  → Waiting 10s for IAM role propagation")
-time.sleep(10)
+threading.Event().wait(10)
 print()
 
 # --------------------------------------------------------------------------- 3. Runtime via starter toolkit

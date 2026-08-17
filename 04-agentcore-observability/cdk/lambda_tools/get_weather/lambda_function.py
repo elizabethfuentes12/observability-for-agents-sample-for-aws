@@ -5,9 +5,9 @@ Event shape (AgentCore Gateway → Lambda):
 """
 
 import json
+import urllib.error
 import urllib.parse
 import urllib.request
-import urllib.error
 
 OPEN_METEO_GEOCODING_URL = "https://geocoding-api.open-meteo.com/v1/search"
 OPEN_METEO_FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
@@ -16,6 +16,9 @@ OPEN_METEO_FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
 def _http_get(url: str, params: dict, timeout: int = 15) -> dict:
     qs = urllib.parse.urlencode(params)
     full = f"{url}?{qs}"
+    parsed = urllib.parse.urlparse(full)
+    if parsed.scheme not in ("https", "http"):
+        raise ValueError(f"Unexpected URL scheme: {parsed.scheme!r}")
     with urllib.request.urlopen(full, timeout=timeout) as resp:
         return json.loads(resp.read().decode("utf-8"))
 

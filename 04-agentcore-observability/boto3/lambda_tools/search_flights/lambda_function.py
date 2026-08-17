@@ -10,9 +10,9 @@ Event shape (AgentCore Gateway → Lambda):
 
 import json
 import os
-
-import urllib.request
 import urllib.error
+import urllib.parse
+import urllib.request
 
 DUFFEL_API_BASE_URL = "https://api.duffel.com"
 DUFFEL_API_VERSION = "v2"
@@ -43,6 +43,8 @@ def _search_offers(origin: str, destination: str, departure_date: str) -> dict:
         }
     }
     url = f"{DUFFEL_API_BASE_URL}/air/offer_requests?return_offers=true"
+    if urllib.parse.urlparse(url).scheme not in ("https", "http"):
+        raise ValueError(f"Unexpected URL scheme in Duffel API URL: {url!r}")
     req = urllib.request.Request(
         url,
         data=json.dumps(payload).encode("utf-8"),

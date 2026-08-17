@@ -119,12 +119,14 @@ def search_flights(origin: str, destination: str, departure_date: str) -> dict:
             "cabin_class": "economy",
         }
     }
-    resp = requests.post(
-        f"{DUFFEL_API_BASE_URL}/air/offer_requests", headers=_duffel_headers(),
-        params={"return_offers": "true"}, json=payload, timeout=40,
-    )
-    if resp.status_code >= 400:
-        return {"error": "search_failed", "status_code": resp.status_code}
+    try:
+        resp = requests.post(
+            f"{DUFFEL_API_BASE_URL}/air/offer_requests", headers=_duffel_headers(),
+            params={"return_offers": "true"}, json=payload, timeout=40,
+        )
+        resp.raise_for_status()
+    except requests.HTTPError as exc:
+        return {"error": "search_failed", "status_code": exc.response.status_code}
     data = resp.json().get("data", {})
     offers = sorted(data.get("offers", []), key=lambda o: float(o.get("total_amount", 1e9)))[:5]
     results = []

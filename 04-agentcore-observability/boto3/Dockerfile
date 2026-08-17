@@ -19,4 +19,7 @@ COPY --chown=bedrock_agentcore:bedrock_agentcore travel_agent.py /app/travel_age
 
 EXPOSE 8080
 
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+    CMD python -c "import socket; s=socket.socket(); s.connect(('localhost',8080)); s.close()" || exit 1
+
 CMD ["opentelemetry-instrument", "python", "-m", "travel_agent"]
