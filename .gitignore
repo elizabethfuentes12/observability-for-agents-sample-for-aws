@@ -10,3 +10,4 @@ __pycache__/
 .DS_Store
 bookings.db
 .ipynb_checkpoints/
+Dockerfile
