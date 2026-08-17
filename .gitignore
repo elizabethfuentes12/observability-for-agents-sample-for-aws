@@ -1,7 +1,8 @@
 .env
 .venv/
 blog/
-video-assets/
+video-assets/*
+!video-assets/*.md
 cdk.out/
 .bedrock_agentcore.yaml
 deployment_package.zip
