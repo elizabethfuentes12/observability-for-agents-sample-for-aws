@@ -298,7 +298,7 @@
 
 ---
 
-## Section 1 (UPDATED): Hook: "running agents blind" (0:00–0:55)
+## Section 1 (UPDATED): Hook - "running agents blind" (0:00–0:55)
 
 > Note: the hook script changed: pain-first opening. Diagram 1.1 (server dashboard) still applies but moves later in the section. New opening b-roll below.
 
@@ -331,9 +331,9 @@
 
 ---
 
-## Section 2: OpenTelemetry: the standard underneath (0:55–1:25)
+## Section 2: OpenTelemetry - the standard underneath (0:55–1:25)
 
-### Diagram 2.0: OTEL: three signals, two worlds
+### Diagram 2.0: OTEL - three signals, two worlds
 
 **Purpose**: El único diagrama de esta sección: OTEL define traces/metrics/logs, y para agentes el contenido cambia.
 
@@ -350,7 +350,7 @@
 
 ---
 
-## Section 6: Production: AgentCore Observability (8:10–11:00)
+## Section 6: Production - AgentCore Observability (8:10–11:00)
 
 ### Diagram 6.1: From terminal to production
 
@@ -397,7 +397,7 @@
 
 ---
 
-### Diagram 6.4: Gateway observability: TargetExecutionTime
+### Diagram 6.4: Gateway observability - TargetExecutionTime
 
 **Purpose**: El concepto estrella del gateway: cuánto del tiempo total fue tu Lambda vs el plumbing.
 
